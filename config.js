@@ -1,5 +1,5 @@
 window.APP_CONFIG = {
-  appTitle: "webapp-core",
+  appTitle: "EU AI Act App",
   enableBurgerMenu: true,        // << hier kannst du das Burger-Menü global an/aus schalten
   showBreadcrumb: false,         // Breadcrumb global
   enableMenu: false,   // <--- NEU
