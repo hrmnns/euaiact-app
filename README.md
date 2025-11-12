@@ -1,1 +1,1 @@
-# euaiact-app
+# EU-AI-Act-Toolkit
