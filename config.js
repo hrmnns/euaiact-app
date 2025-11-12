@@ -6,7 +6,7 @@ window.APP_CONFIG = {
   pages: {
     "index.html": { title: "Start", showInNav: true },
     "sub1.html": { title: "Sub 1", showInNav: true },
-    "sub2.html": { title: "Sub 2", showInNav: true }
+    "sub2.html": { title: "Sub 2", showInNav: true },
     "10_links.html": { title: "Wichtige Links", showInNav: true }
   }
 };
