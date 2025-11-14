@@ -9,6 +9,46 @@
   <script src="config.js"></script>
   <script src="https://hrmnns.github.io/webapp-core/versions/v2/lib/include.js" defer></script>
   <script src="https://hrmnns.github.io/webapp-core/versions/v2/lib/forms.js" defer></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const input = document.getElementById("forms-input");
+      const loadButton = document.getElementById("forms-load-btn");
+      const errorContainer = document.getElementById("forms-error");
+      const root = document.getElementById("forms-root");
+      const loader = document.getElementById("forms-loader");
+
+      loadButton.addEventListener("click", () => {
+        const src = input.value.trim();
+
+        if (!src) {
+          errorContainer.textContent = "Bitte Datei angeben.";
+          return;
+        }
+
+        errorContainer.textContent = "";
+
+        fetch(src)
+          .then(resp => {
+            if (!resp.ok) {
+              throw new Error("HTTP " + resp.status);
+            }
+            return resp.json();
+          })
+          .then(json => {
+            loader.classList.add("hidden");  // Eingabeformular ausblenden
+            root.classList.remove("hidden"); // Formularbereich anzeigen
+
+            // FormsEngine ist global verfügbar
+            new WebAppCoreForms.init(root, json);
+          })
+          .catch(err => {
+            errorContainer.textContent = "Fehler beim Laden: " + err.message;
+          });
+      });
+
+    });
+  </script>
   <style>
     body {
       line-height: 1.55;
@@ -25,7 +65,20 @@
   <main class="max-w-xl mx-auto bg-white border border-gray-200 rounded-lg shadow-sm p-6 mt-8">
     <h2 id="page-title"></h2>
 
-    <div id="forms-root" data-forms-src="simple-forms.json"></div>
+    <div id="forms-loader" class="max-w-4xl mx-auto p-4 space-y-3">
+      <h3 class="text-lg font-semibold">Formular auswählen</h3>
+      <p class="text-sm text-gray-600">Gib die URL oder den Dateinamen der JSON-Datei an.</p>
+
+      <input id="forms-input" type="text" placeholder="z. B. simple-forms.json" class="border rounded px-3 py-2 w-full">
+
+      <button id="forms-load-btn" class="px-4 py-2 bg-blue-600 text-white rounded">
+        Formular laden
+      </button>
+
+      <p id="forms-error" class="text-red-600 text-sm"></p>
+    </div>
+
+    <div id="forms-root" class="hidden"></div>
 
     <p class="leading-relaxed text-gray-700">Add content here ...</p>
   </main>
