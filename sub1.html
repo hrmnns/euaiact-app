@@ -65,8 +65,14 @@
   <div data-include="https://hrmnns.github.io/webapp-core/versions/v2/lib/components/nav-main.html"></div>
 
   <main class="max-w-xl mx-auto bg-white border border-gray-200 rounded-lg shadow-sm p-6 mt-8">
-    <h2 id="page-title"></h2>
+    <!-- Subheader -->
+    <div id="page-title-wrapper" class="mb-6">
+      <h2 id="page-title" class="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">
+      </h2>
+      <p id="page-subtitle" class="text-gray-500 text-sm sm:text-base mt-1 hidden"></p>
+    </div>
 
+    <!-- Formular -->
     <div id="forms-loader" class="max-w-4xl mx-auto p-4 space-y-3">
       <h3 class="text-lg font-semibold">Formular auswählen</h3>
       <p class="text-sm text-gray-600">Gib die URL oder den Dateinamen der JSON-Datei an.</p>
@@ -80,8 +86,10 @@
       <p id="forms-error" class="text-red-600 text-sm"></p>
     </div>
 
+    <!-- Formular-Footer -->
     <div id="forms-root" class="hidden"></div>
 
+    <!-- Page-Footer -->
     <p class="leading-relaxed text-gray-700">Add content here ...</p>
   </main>
 
