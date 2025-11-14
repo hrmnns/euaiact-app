@@ -4,10 +4,9 @@ window.APP_CONFIG = {
   showBreadcrumb: false,         // Breadcrumb global
   enableMenu: false,   // <--- NEU
   pages: {
-    "index.html": { title: "Start", subtitle: "Einstieg in den Fragebogen", showInNav: true },
-    "sub1.html": { title: "Sub 1", subtitle: "Einstieg in den Fragebogen", showInNav: true },
-    "sub2.html": { title: "Sub 2", subtitle: "Einstieg in den Fragebogen", showInNav: true },
-    "10_links.html": { title: "Wichtige Links", subtitle: "Einstieg in den Fragebogen", showInNav: true }
+    "index.html": { title: "Herzlich willkommen", subtitle: "zur EU AI Act App", showInNav: true },
+    "sub1.html": { title: "Rolle klassifizieren", subtitle: "Einstieg in den Fragebogen", showInNav: true },
+    "sub2.html": { title: "Wichtige Links", subtitle: "Offizielle Quellen, Verbandsinformationen, Analysen und Werkzeuge.", showInNav: true }
   }
 };
 

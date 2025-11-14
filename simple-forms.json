@@ -2,45 +2,187 @@
   {
     "id": 1,
     "type": "yesno",
-    "question": "Möchten Sie fortfahren?",
-    "description": "Dies ist eine einfache Beispiel-Frage.",
+    "question": "Wird dieses KI-System von Ihrem Unternehmen im beruflichen Kontext innerhalb der EU eingesetzt oder bereitgestellt?",
+    "description": "Diese Einstiegsfrage prüft, ob das betrachtete KI-System überhaupt in den Anwendungsbereich des EU AI Act fällt. Private, rein persönliche Nutzungen sind nicht erfasst.",
     "yes": { "next": 2 },
     "no": { "next": "END_NONE" },
-
-    "roleAddIfYes": ["Weiter-Teilnehmer"],
-    "roleAddIfNo": ["Abbrecher"],
-    "attributesAddIfYes": ["clicked_yes"],
-    "attributesAddIfNo": ["clicked_no"]
+    "roleAddIfNo": ["Keine Rolle im Sinne des EU AI Act für dieses KI-System"],
+    "attributesAddIfNo": ["Nutzung außerhalb des Anwendungsbereichs (z. B. rein privat oder außerhalb der EU)"]
   },
-
   {
     "id": 2,
     "type": "select",
-    "question": "Welche Option möchten Sie auswählen?",
-    "description": "Bitte treffen Sie eine Auswahl.",
+    "question": "Welche Beschreibung trifft am besten auf die Rolle Ihres Unternehmens in Bezug auf dieses konkrete KI-System zu?",
+    "description": "Wählen Sie das Szenario, das Ihre Situation am genauesten beschreibt. Es geht immer um ein konkretes KI-System oder eine konkrete KI-basierte Lösung.",
     "options": [
       {
-        "label": "Option A",
-        "value": "A",
+        "label": "Wir entwickeln das KI-System oder ein General-Purpose-AI-Modell selbst (inkl. Fein-Tuning) und kontrollieren seine Bereitstellung.",
+        "value": "develop_self",
         "next": 3,
-        "attributesAddIfSelected": ["selected_A"]
+        "roleAddIfSelected": ["Provider"],
+        "attributesAddIfSelected": ["Eigenentwicklung oder maßgebliche Weiterentwicklung"]
       },
       {
-        "label": "Option B",
-        "value": "B",
+        "label": "Das KI-System wurde im Auftrag von uns durch einen Dritten entwickelt, wird aber unter unserem Namen/Markenzeichen bereitgestellt.",
+        "value": "third_party_under_own_name",
         "next": 3,
-        "attributesAddIfSelected": ["selected_B"]
+        "roleAddIfSelected": ["Provider"],
+        "attributesAddIfSelected": ["Outsourcing der Entwicklung, Inverkehrbringen unter eigener Marke"]
+      },
+      {
+        "label": "Wir nutzen ein von einem anderen Unternehmen bereitgestelltes KI-System ausschließlich für unsere eigenen Geschäftsprozesse.",
+        "value": "use_only",
+        "next": 6,
+        "roleAddIfSelected": ["Deployer"],
+        "attributesAddIfSelected": ["Eigenverantwortlicher Einsatz eines fremden KI-Systems"]
+      },
+      {
+        "label": "Wir importieren ein KI-System aus einem Drittstaat (außerhalb EU/EWR), um es in der EU bereitzustellen.",
+        "value": "import",
+        "next": 8,
+        "roleAddIfSelected": ["Importer"],
+        "attributesAddIfSelected": ["Import eines KI-Systems aus einem Drittstaat"]
+      },
+      {
+        "label": "Wir vertreiben ein KI-System (z. B. als Reseller oder Händler), das von einem anderen Anbieter stammt.",
+        "value": "distribute",
+        "next": 10,
+        "roleAddIfSelected": ["Distributor"],
+        "attributesAddIfSelected": ["Bereitstellung eines fremden KI-Systems im Vertrieb/Handel"]
+      },
+      {
+        "label": "Wir sind Hersteller eines physischen Produkts (z. B. Maschine, Medizinprodukt), das ein KI-System als Sicherheitskomponente oder zentrale Funktion enthält.",
+        "value": "product_manufacturer",
+        "next": 12,
+        "roleAddIfSelected": ["Product Manufacturer", "Provider"],
+        "attributesAddIfSelected": ["Produkt mit integrierter KI-Komponente, ggf. sicherheitsrelevant"]
+      },
+      {
+        "label": "Wir handeln als bevollmächtigter Vertreter (Authorised Representative) eines nicht in der EU ansässigen KI-Anbieters.",
+        "value": "authorised_rep",
+        "next": 14,
+        "roleAddIfSelected": ["Authorised Representative"],
+        "attributesAddIfSelected": ["Bevollmächtigte Vertretung eines nicht in der EU ansässigen Providers"]
       }
     ]
   },
-
   {
     "id": 3,
+    "type": "yesno",
+    "question": "Nutzen Sie dieses KI-System zusätzlich auch selbst in Ihren eigenen Geschäftsprozessen?",
+    "description": "Wenn Sie das System nicht nur entwickeln/bereitstellen, sondern auch selbst einsetzen (z. B. intern für Support, Fachprozesse, Analysen), sind Sie neben der Anbieterrolle häufig auch Deployer.",
+    "yes": { "next": 4 },
+    "no": { "next": 4 },
+    "roleAddIfYes": ["Deployer"],
+    "attributesAddIfYes": ["Provider ist zugleich Deployer (Eigenbetrieb)"]
+  },
+  {
+    "id": 4,
+    "type": "yesno",
+    "question": "Stellen Sie dieses KI-System oder darauf basierende Dienste/Produkte Dritten außerhalb Ihres Unternehmens zur Verfügung?",
+    "description": "Hier geht es darum, ob Sie als Anbieter gegenüber Kunden, Partnern oder der Öffentlichkeit auftreten – z. B. als SaaS-Anbieter, App-Anbieter oder integratorischer Dienstleister.",
+    "yes": { "next": 5 },
+    "no": { "next": 5 },
+    "attributesAddIfYes": ["Externe Bereitstellung (B2B/B2C)"],
+    "attributesAddIfNo": ["Nur interner Einsatz, keine externe Bereitstellung"]
+  },
+  {
+    "id": 5,
+    "type": "yesno",
+    "question": "Wird dieses KI-System in einem potenziell \"hochriskanten\" Kontext eingesetzt (z. B. kritische Infrastrukturen, Beschäftigung, Kreditvergabe, Gesundheit)?",
+    "description": "Diese Frage prüft, ob das KI-System in Anwendungsbereichen genutzt wird, die typischerweise unter Anhang III des EU AI Act als Hochrisiko fallen könnten. Eine genaue rechtliche Einordnung erfordert im Zweifel zusätzliche Prüfung.",
+    "yes": { "next": 16 },
+    "no": { "next": 16 },
+    "attributesAddIfYes": ["Einsatz in potenziell hochriskantem Kontext (Annex-III-nahe Anwendung)"],
+    "attributesAddIfNo": ["Einsatz in eher nicht-hochriskanten Anwendungen"]
+  },
+  {
+    "id": 6,
+    "type": "yesno",
+    "question": "Treffen Sie die Entscheidung, in welchen Prozessen und mit welchen Daten dieses KI-System eingesetzt wird?",
+    "description": "Deployer sind diejenigen, die den praktischen Einsatz des KI-Systems steuern – also entscheiden, für welche Zwecke, mit welchen Eingabedaten und unter welchen Rahmenbedingungen das System genutzt wird.",
+    "yes": { "next": 7 },
+    "no": { "next": 7 },
+    "roleAddIfYes": ["Deployer"],
+    "attributesAddIfYes": ["Operative Verantwortung für Einsatz und Kontext des KI-Systems"]
+  },
+  {
+    "id": 7,
+    "type": "yesno",
+    "question": "Nehmen Sie technische Änderungen am KI-System vor, die über Konfiguration hinausgehen (z. B. Fein-Tuning, erneutes Training, Änderung der beabsichtigten Zwecke)?",
+    "description": "Sobald Sie ein KI-System wesentlich verändern oder seinen vorgesehenen Zweck ändern, können Sie nach Art. 25 EU AI Act selbst als Provider gelten – auch wenn Sie das System ursprünglich nur eingesetzt haben.",
+    "yes": { "next": 5 },
+    "no": { "next": 5 },
+    "roleAddIfYes": ["Provider"],
+    "attributesAddIfYes": ["Deployer wird durch wesentliche Änderungen zum (Mit-)Provider"]
+  },
+  {
+    "id": 8,
+    "type": "yesno",
+    "question": "Importieren Sie das KI-System direkt von einem Anbieter außerhalb der EU/EWR und bringen es in der EU in Verkehr?",
+    "description": "Importer sind Unternehmen, die ein KI-System aus einem Drittstaat in die EU einführen, um es hier bereitzustellen. Sie fungieren als Schnittstelle zwischen nicht-europäischen Anbietern und dem EU-Markt.",
+    "yes": { "next": 9 },
+    "no": { "next": 9 },
+    "roleAddIfYes": ["Importer"],
+    "attributesAddIfYes": ["Direkter Import aus Drittstaaten"]
+  },
+  {
+    "id": 9,
+    "type": "yesno",
+    "question": "Bringen Sie das importierte KI-System unter Ihrem eigenen Namen/Markenzeichen in Verkehr oder ändern Sie den vorgesehenen Zweck wesentlich?",
+    "description": "Wenn ein Importeur ein KI-System unter eigener Marke bereitstellt oder den Zweck so ändert, dass ein Hochrisiko-System entsteht, wird er rechtlich selbst zum Provider und übernimmt entsprechende Pflichten.",
+    "yes": { "next": 5 },
+    "no": { "next": 5 },
+    "roleAddIfYes": ["Provider"],
+    "attributesAddIfYes": ["Importer wird durch Rebranding/Zweckänderung zum Provider"]
+  },
+  {
+    "id": 10,
+    "type": "yesno",
+    "question": "Vertreiben Sie das KI-System im Wesentlichen unverändert weiter (z. B. als Reseller), ohne technische Anpassungen oder Zweckänderungen vorzunehmen?",
+    "description": "Distributor stellen ein KI-System lediglich auf dem Markt bereit, ohne es technisch zu verändern. Sie sind wichtige Gatekeeper in der Lieferkette und müssen z. B. grundlegende Konformitätsangaben prüfen.",
+    "yes": { "next": 11 },
+    "no": { "next": 11 },
+    "roleAddIfYes": ["Distributor"],
+    "attributesAddIfYes": ["Klassischer Distributor/Reseller ohne technische Änderungen"]
+  },
+  {
+    "id": 11,
+    "type": "yesno",
+    "question": "Bringen Sie das vertriebene KI-System unter eigener Marke in Verkehr oder nehmen Sie wesentliche Änderungen am System bzw. dessen Zweck vor?",
+    "description": "Auch Distributoren können zu Providern werden, wenn sie das System unter eigenem Namen anbieten oder technisch bzw. hinsichtlich des vorgesehenen Zwecks wesentlich verändern.",
+    "yes": { "next": 5 },
+    "no": { "next": 5 },
+    "roleAddIfYes": ["Provider"],
+    "attributesAddIfYes": ["Distributor wird durch Rebranding/Zweckänderung zum Provider"]
+  },
+  {
+    "id": 12,
+    "type": "yesno",
+    "question": "Ist das KI-System eine Sicherheitskomponente oder übernimmt es eine sicherheitskritische Funktion eines Produkts, das unter spezielle EU-Produktvorschriften fällt (z. B. Maschinen, Medizinprodukte)?",
+    "description": "Wenn das KI-System als Sicherheitskomponente eines regulierten Produkts fungiert, gelten besondere Regeln: Der Produkt-Hersteller wird in der Regel als Provider des Hochrisiko-KI-Systems angesehen.",
+    "yes": { "next": 3 },
+    "no": { "next": 3 },
+    "attributesAddIfYes": ["Sicherheitskomponente eines regulierten Produkts (Annex I)"],
+    "attributesAddIfNo": ["KI-Komponente ohne direkte Einstufung als Sicherheitskomponente"]
+  },
+  {
+    "id": 14,
+    "type": "yesno",
+    "question": "Sind Sie auf Basis eines schriftlichen Mandats als bevollmächtigter Vertreter (Authorised Representative) eines nicht in der EU ansässigen Providers bestellt?",
+    "description": "Authorised Representatives sind in der EU ansässige Stellen, die bestimmte Pflichten des außerhalb der EU ansässigen Providers übernehmen und als zentrale Ansprechstelle fungieren.",
+    "yes": { "next": 16 },
+    "no": { "next": 16 },
+    "roleAddIfYes": ["Authorised Representative"],
+    "attributesAddIfYes": ["Mandat zur Vertretung eines nicht in der EU ansässigen Providers"]
+  },
+  {
+    "id": 16,
     "type": "text",
-    "question": "Geben Sie bitte optional einen kurzen Hinweis ein:",
-    "placeholder": "Ihr Text…",
-    "multiline": false,
+    "question": "Möchten Sie zusätzliche Hinweise zu diesem KI-System für die Dokumentation ergänzen?",
+    "description": "Hier können Sie z. B. den Namen des KI-Systems, Versionsstände, interne Projektnamen oder Aktenzeichen notieren. Diese Information wird nur im Ergebnisprotokoll des Fragebogens angezeigt.",
+    "multiline": true,
     "required": false,
-    "next": "END"
+    "next": "END_SUMMARY"
   }
 ]
