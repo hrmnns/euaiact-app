@@ -1,21 +1,101 @@
 {
   "title": "Wichtige Links zum EU AI Act",
-  "subtitle": "Eine Sammlung der wichtigsten Verweise, Dokumente und Quellen.",
+  "subtitle": "Offizielle Quellen, Verbandsinformationen, Analysen und Werkzeuge.",
+  "filterEnabled": true,
+  "sortEnabled": true,
+
+  "categories": [
+    { "name": "Gesetzestexte", "icon": "gavel" },
+    { "name": "Offizielle EU-Dokumente", "icon": "document" },
+    { "name": "Verbände & Organisationen", "icon": "building" },
+    { "name": "Analysen & Fachartikel", "icon": "article" },
+    { "name": "Tools & Ressourcen", "icon": "external" }
+  ],
+
   "links": [
     {
-      "label": "EU AI Act — Gesetzestext",
+      "label": "EU AI Act – Finaler Gesetzestext (EUR-Lex)",
       "url": "https://eur-lex.europa.eu/eli/reg/2024/1689",
-      "description": "Offizieller konsolidierter Text der EU."
+      "description": "Der offizielle, konsolidierte und rechtsverbindliche Text der EU-Verordnung.",
+      "category": "Gesetzestexte",
+      "tags": ["EU", "Gesetz", "Regulatorik"],
+      "badges": ["EU"],
+      "icon": "gavel"
     },
     {
-      "label": "DSAG — AI Act Übersicht",
+      "label": "Anhang III – Hochrisiko-KI-Systeme",
+      "url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32024R1689#_idTextAnchor161",
+      "description": "Direkte Verlinkung zum Annex III mit der Liste der Hochrisiko-Systeme.",
+      "category": "Gesetzestexte",
+      "tags": ["High Risk", "Annex III", "EU"],
+      "badges": ["EU"],
+      "icon": "document"
+    },
+    {
+      "label": "FAQ der Europäischen Kommission zum AI Act",
+      "url": "https://digital-strategy.ec.europa.eu/en/faqs/eu-ai-act",
+      "description": "Offizielle Erläuterungen der Europäischen Kommission.",
+      "category": "Offizielle EU-Dokumente",
+      "tags": ["EU", "FAQ", "Interpretation"],
+      "badges": ["EU"],
+      "icon": "document"
+    },
+
+    {
+      "label": "DSAG – Schwerpunkt KI: Analysen & Positionen",
       "url": "https://impulsant-dsag.de/kuenstliche-intelligenz/",
-      "description": "Zusammenfassungen und fachliche Einschätzungen."
+      "description": "Detaillierte Fachartikel, praxisnahe Umsetzungstipps und DSAG-Positionen.",
+      "category": "Analysen & Fachartikel",
+      "tags": ["DSAG", "Analyse", "Praxis"],
+      "badges": ["DSAG"],
+      "icon": "article"
     },
     {
-      "label": "BDEW — KI in Energieunternehmen",
+      "label": "BDEW – Künstliche Intelligenz in Energieunternehmen",
       "url": "https://www.bdew.de",
-      "description": "Branchenrelevante Standards und Einschätzungen."
+      "description": "Branchenrelevante KI-Standpunkte, Leitfäden und regulatorische Hinweise.",
+      "category": "Verbände & Organisationen",
+      "tags": ["BDEW", "Energie", "Regulatorik"],
+      "badges": ["BDEW"],
+      "icon": "building"
+    },
+    {
+      "label": "Bitkom – KI-Strategie & rechtliche Einordnung",
+      "url": "https://www.bitkom.org/Themen/Innovative-Technologien/Kuenstliche-Intelligenz",
+      "description": "Strategien, rechtliche Einschätzungen und Handlungsempfehlungen zur KI.",
+      "category": "Verbände & Organisationen",
+      "tags": ["Bitkom", "KI", "Recht"],
+      "badges": ["BITKOM"],
+      "icon": "building"
+    },
+
+    {
+      "label": "McKinsey: Navigating the EU AI Act",
+      "url": "https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/navigating-the-european-union-artificial-intelligence-act",
+      "description": "Analytische Aufbereitung des Gesetzes mit Schwerpunkt auf Unternehmenspraxis.",
+      "category": "Analysen & Fachartikel",
+      "tags": ["Analyse", "Beratung", "Praxis"],
+      "badges": ["GLOBAL"],
+      "icon": "article"
+    },
+
+    {
+      "label": "AI Act Compliance Map (Open Source Tool)",
+      "url": "https://ai-act-compliance-map.eu/",
+      "description": "Interaktives Tool zum Visualisieren der Pflichten und Rollenmodelle.",
+      "category": "Tools & Ressourcen",
+      "tags": ["Tool", "Compliance", "Open Source"],
+      "badges": ["OSS"],
+      "icon": "external"
+    },
+    {
+      "label": "OECD AI Policy Observatory",
+      "url": "https://oecd.ai/en/",
+      "description": "Globale Analysen, Risikoklassifikation und internationale Vergleiche.",
+      "category": "Tools & Ressourcen",
+      "tags": ["OECD", "Vergleich", "Policy"],
+      "badges": ["GLOBAL"],
+      "icon": "external"
     }
   ]
 }
