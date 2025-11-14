@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "type": "yesno",
+    "question": "Möchten Sie fortfahren?",
+    "description": "Dies ist eine einfache Beispiel-Frage.",
+    "yes": { "next": 2 },
+    "no": { "next": "END_NONE" },
+
+    "roleAddIfYes": ["Weiter-Teilnehmer"],
+    "roleAddIfNo": ["Abbrecher"],
+    "attributesAddIfYes": ["clicked_yes"],
+    "attributesAddIfNo": ["clicked_no"]
+  },
+
+  {
+    "id": 2,
+    "type": "select",
+    "question": "Welche Option möchten Sie auswählen?",
+    "description": "Bitte treffen Sie eine Auswahl.",
+    "options": [
+      {
+        "label": "Option A",
+        "value": "A",
+        "next": 3,
+        "attributesAddIfSelected": ["selected_A"]
+      },
+      {
+        "label": "Option B",
+        "value": "B",
+        "next": 3,
+        "attributesAddIfSelected": ["selected_B"]
+      }
+    ]
+  },
+
+  {
+    "id": 3,
+    "type": "text",
+    "question": "Geben Sie bitte optional einen kurzen Hinweis ein:",
+    "placeholder": "Ihr Text…",
+    "multiline": false,
+    "required": false,
+    "next": "END"
+  }
+]
