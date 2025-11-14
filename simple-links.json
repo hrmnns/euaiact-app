@@ -1,0 +1,21 @@
+{
+  "title": "Wichtige Links zum EU AI Act",
+  "subtitle": "Eine Sammlung der wichtigsten Verweise, Dokumente und Quellen.",
+  "links": [
+    {
+      "label": "EU AI Act — Gesetzestext",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/1689",
+      "description": "Offizieller konsolidierter Text der EU."
+    },
+    {
+      "label": "DSAG — AI Act Übersicht",
+      "url": "https://impulsant-dsag.de/kuenstliche-intelligenz/",
+      "description": "Zusammenfassungen und fachliche Einschätzungen."
+    },
+    {
+      "label": "BDEW — KI in Energieunternehmen",
+      "url": "https://www.bdew.de",
+      "description": "Branchenrelevante Standards und Einschätzungen."
+    }
+  ]
+}

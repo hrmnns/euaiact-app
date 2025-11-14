@@ -22,8 +22,14 @@
   <div data-include="https://hrmnns.github.io/webapp-core/versions/v1/lib/components/nav-main.html"></div>
 
   <main class="max-w-xl mx-auto bg-white border border-gray-200 rounded-lg shadow-sm p-6 mt-8">
-    <h2 id="page-title" class="text-2xl font-semibold mb-4"></h2>
+    <!-- Subheader -->
+    <div id="page-title-wrapper" class="mb-6">
+      <h2 id="page-title" class="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">
+      </h2>
+      <p id="page-subtitle" class="text-gray-500 text-sm sm:text-base mt-1 hidden"></p>
+    </div>
 
+    <!-- Formular -->
     <p class="leading-relaxed text-gray-700">
       Die EU AI Act Web-App unterstützt Sie bei der Einordnung von KI-Systemen im europäischen Rechtsrahmen.
       Hier finden Sie strukturierte Informationen, Verweise auf Primärquellen sowie interaktive Werkzeuge zur Rollen-
@@ -31,6 +37,7 @@
       Nutzen Sie die Navigation, um direkt zu den einzelnen Modulen zu gelangen.
     </p>
 
+    <!-- Inhaltsverzeichnis -->
     <div id="toc" class="mt-6"></div>
 
   </main>

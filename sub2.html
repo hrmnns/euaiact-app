@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title></title> <!-- Titel wird dynamisch von config.js gesetzt -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="config.js"></script>
-  <script src="https://hrmnns.github.io/webapp-core/versions/v1/lib/include.js" defer></script>
+  <script src="https://hrmnns.github.io/webapp-core/versions/v2/lib/include.js" defer></script>
+  <script src="https://hrmnns.github.io/webapp-core/versions/v2/lib/linklist.js" defer></script>
   <style>
-  body { line-height: 1.55; }
+    body {
+      line-height: 1.55;
+    }
   </style>
 </head>
+
 <body class="bg-gray-50 text-gray-800">
 
-<div data-include="https://hrmnns.github.io/webapp-core/versions/v1/lib/components/header.html"></div>
-<div data-include="https://hrmnns.github.io/webapp-core/versions/v1/lib/components/breadcrumb.html"></div>
-<div data-include="https://hrmnns.github.io/webapp-core/versions/v1/lib/components/nav-main.html"></div>
+  <div data-include="https://hrmnns.github.io/webapp-core/versions/v2/lib/components/header.html"></div>
+  <div data-include="https://hrmnns.github.io/webapp-core/versions/v2/lib/components/breadcrumb.html"></div>
+  <div data-include="https://hrmnns.github.io/webapp-core/versions/v2/lib/components/nav-main.html"></div>
 
-<main class="max-w-xl mx-auto bg-white border border-gray-200 rounded-lg shadow-sm p-6 mt-8">
+  <main class="max-w-xl mx-auto bg-white border border-gray-200 rounded-lg shadow-sm p-6 mt-8">
     <!-- Subheader -->
     <div id="page-title-wrapper" class="mb-6">
       <h2 id="page-title" class="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">
@@ -26,18 +31,14 @@
     </div>
 
     <!-- Formular -->
-    <p class="leading-relaxed text-gray-700">
-      Die EU AI Act Web-App unterstützt Sie bei der Einordnung von KI-Systemen im europäischen Rechtsrahmen.
-      Hier finden Sie strukturierte Informationen, Verweise auf Primärquellen sowie interaktive Werkzeuge zur Rollen-
-      und Risiko-Bewertung.
-      Nutzen Sie die Navigation, um direkt zu den einzelnen Modulen zu gelangen.
-    </p>
+    <div id="links-root" data-links-src="simple-links.json"></div>
 
     <!-- Formular-Footer -->
     <div id="forms-root" class="hidden"></div>
-</main>
+  </main>
 
-<div data-include="https://hrmnns.github.io/webapp-core/versions/v1/lib/components/footer.html"></div>
+  <div data-include="https://hrmnns.github.io/webapp-core/versions/v2/lib/components/footer.html"></div>
 
 </body>
+
 </html>
