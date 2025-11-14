@@ -40,7 +40,7 @@
             root.classList.remove("hidden"); // Formularbereich anzeigen
 
             // FormsEngine ist global verfügbar
-            new WebAppCoreForms.init(root, json);
+            WebAppCoreForms.init(root, json);
           })
           .catch(err => {
             errorContainer.textContent = "Fehler beim Laden: " + err.message;
